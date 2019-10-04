@@ -28,10 +28,12 @@ class App extends React.Component {
         userRef.onSnapshot(snapShot => {
           console.log(snapShot.data())
           this.setState({
-            id: snapShot.id,
-            ...snapShot.data(),
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            }
           }, () => {
-            console.log(this.state)
+            console.log('after on snapshot', this.state)
           })
         })
       } else {
